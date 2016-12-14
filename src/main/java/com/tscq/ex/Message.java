@@ -1,10 +1,7 @@
 package com.tscq.ex;
 
 import org.apache.commons.lang3.time.DateFormatUtils;
-//import org.codehaus.jackson.annotate.JsonProperty;
 
-//import javax.xml.bind.annotation.XmlElement;
-//import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 import java.util.UUID;
 
@@ -32,9 +29,7 @@ public class Message {
 
     /**
      * UUID should not be revised
-    public void setId(String id) {
-        this.id = id;
-    }
+    public void setId(String id) { this.id = id; }
      */
 
     //@JsonProperty(value="user")
@@ -60,9 +55,7 @@ public class Message {
 
     /**
      * postAt timestamp should not be revised
-    public void setPostedAt(String postedAt) {
-        this.postedAt = postedAt;
-    }
+    public void setPostedAt(String postedAt) { this.postedAt = postedAt; }
      */
 
     //Format message object to json like output with string format

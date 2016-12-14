@@ -1,7 +1,5 @@
 package com.tscq.ex;
 
-//import org.codehaus.jackson.map.ObjectMapper;
-
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
