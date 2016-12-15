@@ -14,7 +14,7 @@ public class StartEntity {
         Server server = new Server(8080);
         ServletHolder sh = new ServletHolder(ServletContainer.class);
         sh.setInitParameter("com.sun.jersey.config.property.resourceConfigClass", PackagesResourceConfig.class.getCanonicalName());
-        sh.setInitParameter("com.sun.jersey.config.property.packages", "com.tscq.ex");
+        sh.setInitParameter("com.sun.jersey.config.property.packages", "com.tscq.ex.rest");
         //start server
         Context context = new Context(server, null);
         context.addServlet(sh, "/*");
