@@ -10,7 +10,7 @@ import com.tscq.ex.dao.Message;
  * Created by johnson on 2016/12/11.
  * Spring MessageService bean
  */
-public interface MessageService {
+public interface IMessageService {
 
     Message replyMessage(String user, String msg);
 
