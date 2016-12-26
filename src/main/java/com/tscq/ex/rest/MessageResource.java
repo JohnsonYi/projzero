@@ -1,7 +1,8 @@
 package com.tscq.ex.rest;
 
 import com.tscq.ex.dao.Message;
-import com.tscq.ex.service.MessageService;
+import com.tscq.ex.service.IMessageService;
+//import com.tscq.ex.service.impl.MessageServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,11 +17,12 @@ import javax.ws.rs.core.MediaType;
 public class MessageResource {
 
     @Autowired
-    private MessageService messageService;
+    private IMessageService messageService;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Message responseMessages() {
+    public Message getMessages() {
+        //messageService = new MessageServiceImpl();
         return messageService.replyMessage("foo", "bar");
     }
 
@@ -28,9 +30,7 @@ public class MessageResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
 
-    public Message responseMessage(Message message) {
-        return message;
-    }
+    public Message postMessage(Message message) { return message; }
     /**
      * This function also print json like output by string format
     public String getMessage(Message message) {

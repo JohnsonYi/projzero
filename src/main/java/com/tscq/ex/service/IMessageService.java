@@ -14,5 +14,4 @@ public interface IMessageService {
 
     Message replyMessage(String user, String msg);
 
-
 }

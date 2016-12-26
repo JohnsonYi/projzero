@@ -1,26 +1,35 @@
 package com.tscq.ex;
 
-import com.sun.jersey.api.core.PackagesResourceConfig;
-import com.sun.jersey.spi.container.servlet.ServletContainer;
-import org.mortbay.jetty.Server;
-import org.mortbay.jetty.servlet.Context;
-import org.mortbay.jetty.servlet.ServletHolder;
+import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.servlet.ServletContextHandler;
+import org.eclipse.jetty.servlet.ServletHolder;
+import org.springframework.web.context.ContextLoaderListener;
 
 /**
  * Created by johnson on 2016/12/10.
  */
 public class StartEntity {
     public static void main(String[] args) {
+
         Server server = new Server(8080);
-        ServletHolder sh = new ServletHolder(ServletContainer.class);
-        sh.setInitParameter("com.sun.jersey.config.property.resourceConfigClass", PackagesResourceConfig.class.getCanonicalName());
-        sh.setInitParameter("com.sun.jersey.config.property.packages", "com.tscq.ex.rest");
-        //start server
-        Context context = new Context(server, null);
-        context.addServlet(sh, "/*");
+        ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
+
+        context.setContextPath("/");
+        context.addEventListener(new ContextLoaderListener());
+        context.setInitParameter("contextConfigLocation", "classpath:applicationContext.xml");
+
+        server.setHandler(context);
+
+        ServletHolder sh = context.addServlet(org.glassfish.jersey.servlet.ServletContainer.class, "/*");
+        sh.setInitOrder(0);
+        sh.setInitParameter("jersey.config.server.provider.classnames", "org.glassfish.jersey.jackson.JacksonFeature");
+        sh.setInitParameter("jersey.config.server.provider.packages", "com.tscq.ex.rest");
+
         try {
             server.start();
             server.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
