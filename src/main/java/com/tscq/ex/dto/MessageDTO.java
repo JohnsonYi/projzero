@@ -1,6 +1,4 @@
-package com.tscq.ex.dao;
-
-import org.apache.commons.lang3.time.DateFormatUtils;
+package com.tscq.ex.dto;
 
 import java.util.Date;
 import java.util.UUID;
@@ -10,27 +8,26 @@ import java.util.UUID;
  * Created by johnson on 2016/12/11.
  * Message DTO class
  */
-public class Message {
-    private String id= UUID.randomUUID().toString();
+//@XmlRootElement
+public class MessageDTO {
+    private UUID id = UUID.randomUUID();
     private String user;
     private String message;
-    private String postedAt = DateFormatUtils.format(new Date(), "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+    //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", timezone = "UTC")
+    private Date postedAt = new Date();   //DateFormatUtils.format(new Date(), "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
 
-    public Message() {}
+    public MessageDTO() {}
 
-    public Message(String user, String message) {
+    public MessageDTO(String user, String message) {
         this.user = user;
         this.message = message;
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    /**
-     * UUID should not be revised
-    public void setId(String id) { this.id = id; }
-     */
+    public void setId(UUID id) { this.id = id; }
 
     //@JsonProperty(value="user")
     public String getUser() {
@@ -49,14 +46,11 @@ public class Message {
         this.message = message;
     }
 
-    public String getPostedAt() {
+    public Date getPostedAt() {
         return postedAt;
     }
 
-    /**
-     * postAt timestamp should not be revised
-    public void setPostedAt(String postedAt) { this.postedAt = postedAt; }
-     */
+    public void setPostedAt(Date postedAt) { this.postedAt = postedAt; }
 
     //Format message object to json like output with string format
     @Override
