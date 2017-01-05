@@ -22,8 +22,9 @@ public class StartEntity {
 
         ServletHolder sh = context.addServlet(org.glassfish.jersey.servlet.ServletContainer.class, "/*");
         sh.setInitOrder(0);
-        sh.setInitParameter("jersey.config.server.provider.classnames", "org.glassfish.jersey.jackson.JacksonFeature");
-        sh.setInitParameter("jersey.config.server.provider.packages", "com.tscq.ex.rest");
+        sh.setInitParameter("jersey.config.server.provider.classname", "org.glassfish.jersey.jackson.JacksonFeature");
+        //sh.setInitParameter("com.sun.jersey.api.json.POJOMappingFeature","true");
+        sh.setInitParameter("jersey.config.server.provider.packages", "com.tscq.ex.rest;com.tscq.ex.provider");
 
         try {
             server.start();

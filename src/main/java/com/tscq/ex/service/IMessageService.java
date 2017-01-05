@@ -4,7 +4,7 @@ package com.tscq.ex.service;
 
 //@Singleton
 
-import com.tscq.ex.dao.Message;
+import com.tscq.ex.dto.MessageDTO;
 
 /**
  * Created by johnson on 2016/12/11.
@@ -12,6 +12,6 @@ import com.tscq.ex.dao.Message;
  */
 public interface IMessageService {
 
-    Message replyMessage(String user, String msg);
+    MessageDTO replyMessage(String user, String msg);
 
 }
